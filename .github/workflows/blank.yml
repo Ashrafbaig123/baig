@@ -10,5 +10,5 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v3
-    - name: Download files
-      run: wget git clone https://github.com/Ashrafbaig123/baig.git
+    - name: list files
+      run: ls -R
