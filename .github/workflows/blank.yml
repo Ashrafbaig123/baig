@@ -1,0 +1,15 @@
+name: purge of Images
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download_image_name_file:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+        name: my-artifact
+        path: tmp/
+    - name: Display structure of downloaded files
+      run: ls -R tmp
