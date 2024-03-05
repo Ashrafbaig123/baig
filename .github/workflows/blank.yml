@@ -11,9 +11,4 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3
     - name: Download files
-      uses: actions/download-artifact@v4
-      with:
-        name: value
-        path: tmp/
-    - name: Display structure of downloaded files
-      run: ls -R tmp
+      run: wget git clone https://github.com/Ashrafbaig123/baig.git
