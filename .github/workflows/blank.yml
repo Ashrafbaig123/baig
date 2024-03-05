@@ -11,4 +11,5 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3
     - name: list files
-      run:  /usr/bin/git ls -R
+      run:  /usr/bin/git
+      run: ls -R
