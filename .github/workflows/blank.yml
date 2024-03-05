@@ -5,6 +5,7 @@ on:
 
 jobs:
   download_image_name_file:
+    name: download image
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@v4
