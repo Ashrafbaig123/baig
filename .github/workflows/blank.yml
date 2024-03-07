@@ -1,7 +1,8 @@
 name: purge of Images
 
-on:
-  workflow_dispatch:
+on: [push]
+  #workflow_dispatch:
+  
 
 jobs:
   download_image_name_file:
