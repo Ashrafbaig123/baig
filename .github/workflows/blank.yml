@@ -15,3 +15,7 @@ jobs:
            cat value
            ls -R
            sed -i '1,13d' value
+           cat value
+           sed 's/ //g' value 
+           value :wq
+           cat value
