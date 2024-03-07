@@ -14,5 +14,5 @@ jobs:
       run: | 
            cat value
            ls -R
-           sed -i '11,13d' value
+           sed -i '1,13d' value
            cat value
