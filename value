@@ -1,0 +1,16 @@
+spec:
+  destination:
+    server: abc
+    namespace: c
+    shortEnv: 
+  source:
+    repoURL: g
+    targetRevision: 1
+    environment: abc
+    kustomizationPath: abc
+    valueFile: values-zzz
+images:
+  tags:
+    busybox: "l.28"
+    nginx: "alpine"
+    
