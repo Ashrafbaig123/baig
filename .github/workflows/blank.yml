@@ -16,6 +16,7 @@ jobs:
            ls -R
            sed -i '1,13d' value
            cat value
-           sed 's/ //g' value
+           sed 's/ //g' value > value1
            sed -i -e 's/^/abc./' value
            cat value
+           cat value1
