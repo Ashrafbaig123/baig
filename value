@@ -13,4 +13,3 @@ images:
   tags:
     busybox: "l.28"
     nginx: "alpine"
-    
