@@ -19,3 +19,5 @@ jobs:
            sed 's/ //g' value > value1
            sed -i -e 's/^/abc./' value1
            cat value1
+           sed 's/"//' value1 > value2
+           cat value2
