@@ -40,5 +40,5 @@ jobs:
           az cloud set --name AzureCloud
           echo "Login to Azure"
           az login --service-principal -u 0c9329ee-fef9-4f31-815b-c1e1a38e43b9 -p pdC8Q~tkSbbuCFfaqkjErMMOYY7z2F5_Wbr.MdmG --tenant 05b6ac85-4b5b-4e98-a644-0901baef399d
-          az acr repository list --name $registryName --output json | ConvertFrom-Json
+          az acr repository list --name Dockerimages11 --output json | ConvertFrom-Json
           
