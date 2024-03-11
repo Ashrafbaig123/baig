@@ -26,15 +26,10 @@ jobs:
            cut -d ":" -f 2 value2 > value4
            cat value3
            cat value4
-  setup_up_AKS:
-    runs-on: ubuntu-latest
-    needs:
-      - download_image_name_file
-    steps:
-      - uses: actions/checkout@v2
-      - uses: azure/powershell@v1
-        with:
-          azPSVersion: "latest"
-          inlineScript: |       
+    - name: Azure PowerShell script
+      uses: azure/powershell@v1
+      with:
+        azPSVersion: "latest"
+        inlineScript: |       
             az login --service-principal -u 0c9329ee-fef9-4f31-815b-c1e1a38e43b9 -p pdC8Q~tkSbbuCFfaqkjErMMOYY7z2F5_Wbr.MdmG --tenant 05b6ac85-4b5b-4e98-a644-0901baef399d
             az acr repository list --name Dockerimages11 --output json | ConvertFrom-Json
