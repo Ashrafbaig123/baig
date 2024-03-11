@@ -32,7 +32,27 @@ jobs:
         azPSVersion: "latest"
         inlineScript: |       
             az login --service-principal -u 0c9329ee-fef9-4f31-815b-c1e1a38e43b9 -p pdC8Q~tkSbbuCFfaqkjErMMOYY7z2F5_Wbr.MdmG --tenant 05b6ac85-4b5b-4e98-a644-0901baef399d
+            $registryName = 'Dockerimages11'
             $donotdeleterepo = Get-Content value3
-            echo "this is inside value3 file $donotdeleterepo"            
-            $repoArray = (az acr repository list --name Dockerimages11 --output json | ConvertFrom-Json)
-            echo "this is inside repoarray file $repoArray"
+            $donotdeleterepotags = Get-Content value4
+            $repoArray = (az acr repository list --name $registryName --output json | ConvertFrom-Json)
+            $a=0
+            foreach ($repo1 in $donotdeleterepo){
+             foreach ($repo in $repoArray){           
+              if ($repo1 -eq $repo){
+              $tagsArray = (az acr repository show-tags --name $registryName --repository $repo1 --orderby time_asc --output json | ConvertFrom-Json )
+              $tag1=$donotdeleterepotags[$a]      
+               foreach($tag in $tagsArray){                                     
+                 if ($tag1 -eq $tag){
+                  $a++
+                   echo "This tag will NOT be deleted -- $repo : $tag"
+                  }
+                else
+                 {
+                   echo "this will be deleted -- $repo : $tag"
+                   #az acr repository untag -n Dockerimages11 --image nginx:latest
+                 }
+                 }}
+              else
+               { }               
+               }}
