@@ -35,5 +35,5 @@ jobs:
             az acr repository list --name Dockerimages11 --output json | ConvertFrom-Json
             $donotdeleterepo = Get-Content value3
             echo "this is inside value3 file $donotdeleterepo"            
-            $repoArray = (az acr repository list --name $registryName --output json | ConvertFrom-Json)
-            echo "this is inside value3 file $repoArray"  
+            $repoArray = (az acr repository list --name $Dockerimages11 --output json | ConvertFrom-Json)
+            echo "this is inside repoarray file $repoArray"
