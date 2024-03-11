@@ -35,8 +35,10 @@ jobs:
       - uses: elstudio/action-install-azure-cli@v1
       - name: 'Preparation'
         run: |
+          ls -R
           echo "Set Cloud to AzureCloud"
           az cloud set --name AzureCloud
           echo "Login to Azure"
-          az login --service-principal -u afbaig19@gmail.com -p Faz@l786 --tenant 05b6ac85-4b5b-4e98-a644-0901baef399d
+          az login --service-principal -u afbaig19_gmail.com#EXT#@afbaig19gmail.onmicrosoft.com -p Faz@l786 --tenant 05b6ac85-4b5b-4e98-a644-0901baef399d
           az acr repository list --name $registryName --output json | ConvertFrom-Json
+          
