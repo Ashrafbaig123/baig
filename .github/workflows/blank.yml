@@ -22,7 +22,7 @@ jobs:
            cat value1
            sed 's/"//g' value1 > value2
            cat value2
-           cut -f 1 value > value3
-           cut -f 2 value > value4
+           cut -d ":" -f 1 value2 > value3
+           cut -d ":" -f 2 value2 > value4
            cat value3
            cat value4
