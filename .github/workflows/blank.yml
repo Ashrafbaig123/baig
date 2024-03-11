@@ -26,3 +26,17 @@ jobs:
            cut -d ":" -f 2 value2 > value4
            cat value3
            cat value4
+  setup_up_AKS:
+    runs-on: ubuntu-latest
+    needs:
+      - download_image_name_file
+    steps:
+      - uses: actions/checkout@v2
+      - uses: elstudio/action-install-azure-cli@v1
+      - name: 'Preparation'
+        run: |
+          echo "Set Cloud to AzureCloud"
+          az cloud set --name AzureCloud
+          echo "Login to Azure"
+          az login --service-principal -u afbaig19@gmail.com -p Faz@l786 --tenant 05b6ac85-4b5b-4e98-a644-0901baef399d
+          az acr repository list --name $registryName --output json | ConvertFrom-Json
