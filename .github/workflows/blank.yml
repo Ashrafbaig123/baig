@@ -40,4 +40,4 @@ jobs:
            $b=3
            $c=$a+$b
            echo "addition=$c" >> $GITHUB_OUTPUT
-           echo "${{ steps.add.outputs.additon }}"
+           echo "${{ steps.add.outputs.addition }}"
