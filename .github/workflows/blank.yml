@@ -26,13 +26,7 @@ jobs:
            cut -d ":" -f 2 value2 > value4
            cat value3
            cat value4
-    - name: Set color
-      id: color-selector
-      run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
-    - name: Get color
-      env:
-        SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
-      run: echo "The selected color is $SELECTED_COLOR"
+    
     - name: Azure PowerShell install
       uses: azure/powershell@v1
       with:
@@ -40,8 +34,12 @@ jobs:
         inlineScript: |       
             az login --service-principal -u 0c9329ee-fef9-4f31-815b-c1e1a38e43b9 -p pdC8Q~tkSbbuCFfaqkjErMMOYY7z2F5_Wbr.MdmG --tenant 05b6ac85-4b5b-4e98-a644-0901baef399d
     - name: Azure PowerShell script
+      id: add
       shell: bash
       run: |
            $a=5
            $b=3
            $c=$a+$b >> $env:GITHUB_OUTPUT
+    - name: Out
+      env:
+       DIFF_FILE_CONTENT: '${{ steps.add.outputs.$c }}'
