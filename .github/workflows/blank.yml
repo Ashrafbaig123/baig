@@ -39,7 +39,7 @@ jobs:
       run: |
            $a=5
            $b=3
-           $c=$a+$b >> $env:GITHUB_OUTPUT
+           $c=$a+$b >> $GITHUB_OUTPUT
     - name: Out
       env:
-       DIFF_FILE_CONTENT: '${{ steps.add.outputs.$c }}'
+       c: '${{ steps.add.outputs.$c }}'
