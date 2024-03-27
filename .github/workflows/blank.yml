@@ -34,12 +34,12 @@ jobs:
             az login --service-principal -u 0c9329ee-fef9-4f31-815b-c1e1a38e43b9 -p pdC8Q~tkSbbuCFfaqkjErMMOYY7z2F5_Wbr.MdmG --tenant 05b6ac85-4b5b-4e98-a644-0901baef399d
     - name: Azure PowerShell script
       id: add
-      shell: bash
+      shell: pwsh
       run: |
-           a=5
-           b=3
-           sum=$(($a + $b))
-           echo "addition=$sum" >> $GITHUB_OUTPUT
+           $a=5
+           $b=3
+           $c=$a+$b
+           echo "addition=$c" >> $env:GITHUB_OUTPUT
     - name: out
       run: |
-           echo  "${{ steps.add.outputs.addition }}"
+           echo  "from powershell:: ${{ steps.add.outputs.addition }}"
