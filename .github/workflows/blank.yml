@@ -35,4 +35,4 @@ jobs:
     - name: Azure PowerShell script
       shell: pwsh
       run: |
-           az acr repository list --name $registryName --output json | ConvertFrom-Json
+           az acr repository list --name Dockerimages11 --output json | ConvertFrom-Json
