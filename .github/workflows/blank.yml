@@ -58,7 +58,8 @@ jobs:
                   }
                   }}
                   else
-                    { }               
+                    { } 
+              }}
     - name: out
       run: |
            echo  "from powershell:: ${{ steps.add.outputs.first }}"
