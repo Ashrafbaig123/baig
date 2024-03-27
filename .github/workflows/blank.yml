@@ -35,4 +35,6 @@ jobs:
     - name: Azure PowerShell script
       shell: pwsh
       run: |
-           az acr repository list --name Dockerimages11 --output json | ConvertFrom-Json
+           a=5
+           b=3
+           c=a=b >> $env:GITHUB_ENV
