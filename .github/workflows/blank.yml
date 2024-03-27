@@ -36,8 +36,8 @@ jobs:
       id: add
       shell: bash
       run: |
-           $a=5
-           $b=3
+           a=5
+           b=3
            sum=$(($a + $b))
            echo "addition=$sum" >> $GITHUB_OUTPUT
            echo "${{ steps.add.outputs.addition }}"
