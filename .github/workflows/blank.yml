@@ -38,6 +38,6 @@ jobs:
       run: |
            $a=5
            $b=3
-           $c=$a+$b
-           echo "addition=$c" >> $GITHUB_OUTPUT
+           sum=$(($a + $b))
+           echo "addition=$sum" >> $GITHUB_OUTPUT
            echo "${{ steps.add.outputs.addition }}"
