@@ -1,5 +1,5 @@
 
-name: purge of Images
+name: output
 
 on: [push]
   #workflow_dispatch:
