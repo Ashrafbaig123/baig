@@ -36,10 +36,30 @@ jobs:
       id: add
       shell: pwsh
       run: |
-           $a=5
-           $b=3
-           $c=$a+$b
-           echo "addition=$c" >> $env:GITHUB_OUTPUT
+           $registryName = 'Dockerimages11'
+           $donotdeleterepo = Get-Content value3
+           $donotdeleterepotags = Get-Content value4
+           $repoArray = (az acr repository list --name $registryName --output json | ConvertFrom-Json)   
+           $a=0
+           foreach ($repo1 in $donotdeleterepo){
+             foreach ($repo in $repoArray){           
+               if ($repo1 -eq $repo){
+               $tagsArray = (az acr repository show-tags --name $registryName --repository $repo1 --orderby time_asc --output json | ConvertFrom-Json )
+               $tag1=$donotdeleterepotags[$a]      
+                 foreach($tag in $tagsArray){                                     
+                   if ($tag1 -eq $tag){
+                   $a++
+                   echo "first=This tag will NOT be deleted -- $repo : $tag" >> $env:GITHUB_OUTPUT
+                   }
+                   else
+                   {
+                   echo "second=this will be deleted -- $repo : $tag" >> $env:GITHUB_OUTPUT
+                   #az acr repository untag -n Dockerimages11 --image nginx:latest
+                  }
+                  }}
+                  else
+                    { }               
     - name: out
       run: |
-           echo  "from powershell:: ${{ steps.add.outputs.addition }}"
+           echo  "from powershell:: ${{ steps.add.outputs.first }}"
+           echo  "from powershell:: ${{ steps.add.outputs.second }}"
