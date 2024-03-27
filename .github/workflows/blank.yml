@@ -35,6 +35,6 @@ jobs:
     - name: Azure PowerShell script
       shell: pwsh
       run: |
-           a=5
-           b=3
-           c=a=b >> $env:GITHUB_ENV
+           $a=5
+           $b=3
+           $c=$a+$b
