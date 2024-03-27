@@ -35,7 +35,6 @@ jobs:
     - name: Azure PowerShell script
       shell: pwsh
       run: |
-           ./script.ps1
-           "$script.ps1" | Out-File -FilePath $env:GITHUB_ENV -Append
-      
-           
+           #./script.ps1
+           #"$script.ps1" | Out-File -FilePath $env:GITHUB_ENV -Append
+           az acr repository list --name $registryName --output json | ConvertFrom-Json
