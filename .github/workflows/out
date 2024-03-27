@@ -1,0 +1,22 @@
+name: output
+
+on: [push]
+  #workflow_dispatch:
+  
+
+jobs:
+  download_image_name_file:
+    name: download image
+    runs-on: ubuntu-latest
+    steps:
+    - name: Azure PowerShell script
+      id: add
+      shell: bash
+      run: |
+           a=5
+           b=3
+           sum=$(($a + $b))
+           echo "addition=$sum" >> $GITHUB_OUTPUT
+    - name: Azure output
+         run: |
+              echo "${{ steps.add.outputs.addition }}"
