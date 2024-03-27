@@ -26,7 +26,6 @@ jobs:
            cut -d ":" -f 2 value2 > value4
            cat value3
            cat value4
-    
     - name: Azure PowerShell install
       uses: azure/powershell@v1
       with:
@@ -42,5 +41,5 @@ jobs:
            $c=$a+$b >> $GITHUB_OUTPUT
     - name: Out
       env:
-       c: ${{ steps.add.outputs.$c }}
+       c: '${{ steps.add.outputs.$c }}'
        run: echo "$c"
