@@ -53,7 +53,8 @@ jobs:
                    }
                    else
                    {
-                   echo "second=$tag" >> $env:GITHUB_OUTPUT
+                   second=$tag
+                   echo "$second" >> $env:GITHUB_OUTPUT
                    #az acr repository untag -n Dockerimages11 --image nginx:latest
                   }
                   }}
@@ -62,6 +63,6 @@ jobs:
               }}
     - name: out
       run: |
-           echo  "from powershell:: ${{ env.first }}"
-           echo  "from powershell:: ${{ steps.add.outputs.second }}"
-           echo  "from powershell:: ${{ env.second }}"
+          
+           echo  "from powershell:: ${{ steps.add.outputs.$second }}"
+           
