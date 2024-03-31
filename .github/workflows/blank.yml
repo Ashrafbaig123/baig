@@ -40,7 +40,7 @@ jobs:
            $donotdeleterepo = Get-Content value3
            $donotdeleterepotags = Get-Content value4
            $repoArray = (az acr repository list --name $registryName --output json | ConvertFrom-Json)
-           echo "third=$repoarray" >> $env:GITHUB_OUTPUT           
+           echo "third=$donotdeleterepo" >> $env:GITHUB_OUTPUT           
            $a=0
            foreach ($repo1 in $donotdeleterepo){
              foreach ($repo in $repoArray){           
