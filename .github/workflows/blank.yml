@@ -52,7 +52,8 @@ jobs:
                  foreach($tag in $tagsArray){                                     
                    if ($tag1 -eq $tag){
                    $a++
-                   echo "first=$tag" >> $env:GITHUB_OUTPUT
+                   z=100
+                   echo "first=$z" >> $env:GITHUB_OUTPUT
                    }
                    else
                    {
@@ -66,7 +67,7 @@ jobs:
               }}
     - name: out
       run: |
-          
+           echo  "from powershell:: ${{ steps.add.outputs.first }}"
            echo  "from powershell:: ${{ steps.add.outputs.second }}"
            echo  "from powershell:: ${{ steps.add.outputs.third }}"
            echo  "from powershell:: ${{ steps.add.outputs.fourth }}"
