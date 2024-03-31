@@ -46,6 +46,7 @@ jobs:
              foreach ($repo in $repoArray){           
                if ($repo1 -eq $repo){
                $tagsArray = (az acr repository show-tags --name $registryName --repository nginx --orderby time_asc --output json | ConvertFrom-Json )
+               $tagsArray | ConvertTo-Json 
                echo "fourth=$tagsArray" >> $env:GITHUB_OUTPUT
                $tag1=$donotdeleterepotags[$a]      
                  foreach($tag in $tagsArray){                                     
