@@ -39,8 +39,8 @@ jobs:
            $registryName = 'Dockerimages11'
            $donotdeleterepo = Get-Content value3
            $donotdeleterepotags = Get-Content value4
-           $repoArray = (az acr repository list --name $registryName --output json | ConvertFrom-Json)
-           echo "third=$donotdeleterepo" >> $env:GITHUB_OUTPUT           
+           $repoArray = (az acr repository show-tags --name $registryName --repository nginx --orderby time_asc --output json | ConvertFrom-Json)
+           echo "third=$repoArray" >> $env:GITHUB_OUTPUT           
            $a=0
            foreach ($repo1 in $donotdeleterepo){
              foreach ($repo in $repoArray){           
