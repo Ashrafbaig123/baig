@@ -32,43 +32,9 @@ jobs:
         azPSVersion: "latest"
         inlineScript: |       
             az login --service-principal -u 0c9329ee-fef9-4f31-815b-c1e1a38e43b9 -p pdC8Q~tkSbbuCFfaqkjErMMOYY7z2F5_Wbr.MdmG --tenant 05b6ac85-4b5b-4e98-a644-0901baef399d
-    - name: Azure PowerShell script
-      id: add
-      shell: pwsh
-      run: |
-           $registryName = 'Dockerimages11'
-           $donotdeleterepo = Get-Content value3
-           $donotdeleterepotags = Get-Content value4
-           $repoArray = (az acr repository show-tags --name $registryName --repository nginx --orderby time_asc --output json | ConvertFrom-Json)
-           echo "third=$repoArray" >> $env:GITHUB_OUTPUT           
-           $a=0
-           foreach ($repo1 in $donotdeleterepo){
-             foreach ($repo in $repoArray){           
-               if ($repo1 -eq $repo){
-               $tagsArray = (az acr repository show-tags --name $registryName --repository nginx --orderby time_asc --output json | ConvertFrom-Json )
-               $tagsArray | ConvertTo-Json 
-               echo "fourth=$tagsArray" >> $env:GITHUB_OUTPUT
-               $tag1=$donotdeleterepotags[$a]      
-                 foreach($tag in $tagsArray){                                     
-                   if ($tag1 -eq $tag){
-                   $a++
-                   z=100
-                   echo "first=$z" >> $env:GITHUB_OUTPUT
-                   }
-                   else
-                   {
-                   second=$tag
-                   echo "second=$second" >> $env:GITHUB_OUTPUT
-                   #az acr repository untag -n Dockerimages11 --image nginx:latest
-                  }
-                  }}
-                  else
-                    { } 
-              }}
-    - name: out
-      run: |
-           echo  "from powershell:: ${{ steps.add.outputs.first }}"
-           echo  "from powershell:: ${{ steps.add.outputs.second }}"
-           echo  "from powershell:: ${{ steps.add.outputs.third }}"
-           echo  "from powershell:: ${{ steps.add.outputs.fourth }}"
+    - name: Loop over items
+      run: |    
+           for item in one two three; do            
+           echo "Item: $item"            
+           done
            
