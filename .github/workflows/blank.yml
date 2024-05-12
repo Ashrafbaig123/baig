@@ -38,5 +38,6 @@ jobs:
            for line in $value5; do            
            echo "file: $line"            
            az acr repository show-tags --name $Dockerimages11 --repository nginx --orderby time_asc
+           done
            
            
