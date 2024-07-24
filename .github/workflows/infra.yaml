@@ -2,22 +2,24 @@ name: infra
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: testing
-        required: true
-        default: 'EMEA_DEV'
-        type: choice
-        options:
-          - EMEA_DEV
-          - AMER_INT
-env:
-  GH_RUNNER_NAME: ${{ vars.GH_RUNNER_NAME }}
-  TERRAFORM_VERSION: ${{ vars.TERRAFORM_VERSION }}        
+    #inputs:
+      
+        #description: testing
+        #required: true
+        #default: 'EMEA_DEV'
+        #type: choice
+        #options:
+         # - EMEA_DEV
+          #- AMER_INT
+       
 jobs:
   download_image_name_file:
     name: Overview Environment Variables
     runs-on: ubuntu-latest
+    env:
+      GH_RUNNER_NAME: ${{ vars.GH_RUNNER_NAME }}
+      TERRAFORM_VERSION: ${{ vars.TERRAFORM_VERSION }} 
+      environment: AMER_INT
     steps:
     - name: checkout
       uses: actions/checkout@v3          
