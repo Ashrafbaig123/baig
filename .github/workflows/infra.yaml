@@ -14,10 +14,8 @@ on:
 jobs:
   download_image_name_file:
     name: Overview Environment Variables
-    runs-on: ubuntu-latest
-    env:
-       GH_RUNNER_NAME: ${{ vars.GH_RUNNER_NAME }}
-       TERRAFORM_VERSION: ${{ vars.TERRAFORM_VERSION }} 
+    environment: ${{ github.event.inputs.environment }}
+    runs-on: ubuntu-latest     
     steps:
       - name: echo
         run: |
