@@ -18,14 +18,11 @@ jobs:
   download_image_name_file:
     name: Overview Environment Variables
     runs-on: ubuntu-latest  
-    environment: '${{ github.event.inputs.environment }}'
+    environment: ${{ github.event.inputs.environment }}
     steps:
       - name: echo
         run: |
            echo "Environment: ${{ github.event.inputs.environment }}"
-           echo "Github Runner Label to run on: ${{ github.event.inputs.environment }}"
-           echo "Terraform version: ${{ env.TERRAFORM_VERSION }}"    
-
-  
-    
+           echo "Github Runner Label to run on: ${{ vars.GH_RUNNER_NAME }}"
+           echo "Terraform version: ${{ env.TERRAFORM_VERSION }}"
           
