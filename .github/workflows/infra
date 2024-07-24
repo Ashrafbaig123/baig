@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
+        description: testing
         required: true
         default: 'EMEA_DEV'
         type: choice
