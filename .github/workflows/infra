@@ -1,0 +1,51 @@
+name: infra
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        default: 'EMEA_DEV'
+        type: choice
+        options:
+          - EMEA_DEV
+          - AMERICAS_INT
+          - AMER_PROD
+env:
+  GH_RUNNER_NAME: >-
+    ${{ fromJson('{
+      "EMEA_DEV": "iac-development",
+      "AMERICAS_INT": "AMERICAS_INT",
+      "AMER_PROD": "americas-production",
+
+    }')[github.event.inputs.environment] }}
+  TERRAFORM_VERSION: >-
+    ${{ fromJson('{
+      "EMEA_DEV": "1.4.5",
+      "AMERICAS_INT": "1.4.5",
+      "AMER_PROD": "1.4.5",
+    }')[github.event.inputs.environment] }} 
+
+
+    jobs:
+  # this init step is still required to also set the GH Runner via the map above.
+  # https://stackoverflow.com/a/74217028/3420179
+  init:
+    runs-on: 
+      # as of Nov. 2023 this covers ubuntu 20 and ubuntu 22 runners
+      - self-hosted
+      - Linux
+      - X64
+    outputs:
+        RUNNER_NAME: ${{ env.GH_RUNNER_NAME }}
+    steps:
+        - name: Overview Environment Variables
+          run: |
+            echo "Environment: ${{ github.event.inputs.environment }}"
+            echo "Github Runner Label to run on: ${{ env.GH_RUNNER_NAME }}"
+            echo "Terraform version: ${{ env.TERRAFORM_VERSION }}"
+
+  plan-or-show-infrastructure:
+    needs: [ init ]
+    runs-on: ${{ needs.init.outputs.RUNNER_NAME }}
+    environment: '${{ github.event.inputs.environment }}'
