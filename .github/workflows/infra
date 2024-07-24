@@ -5,6 +5,7 @@ on:
     inputs:
       environment:
         required: true
+        default: 'EMEA_DEV'
         type: choice
         options:
           - EMEA_DEV
