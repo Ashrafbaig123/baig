@@ -13,9 +13,9 @@ on:
           - AMER_INT
 jobs:
    runs-on: ubuntu-latest
-    outputs:
+   outputs:
         RUNNER_NAME: ${{ github.event.inputs.environment }}
-    steps:
+   steps:
         - name: Overview Environment Variables
           run: |
             echo "Environment: ${{ github.event.inputs.environment }}"
