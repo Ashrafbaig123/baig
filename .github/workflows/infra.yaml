@@ -11,6 +11,9 @@ on:
         options:
           - EMEA_DEV
           - AMER_INT
+env:
+  GH_RUNNER_NAME: ${{ vars.GH_RUNNER_NAME }}
+  TERRAFORM_VERSION: ${{ vars.TERRAFORM_VERSION }}          
 jobs:
   download_image_name_file:
     name: Overview Environment Variables
@@ -22,6 +25,6 @@ jobs:
       run: |
            echo "Environment: ${{ github.event.inputs.environment }}"
            echo "Github Runner Label to run on: ${{ github.event.inputs.environment }}"
-           echo "Terraform version: ${{ vars.TERRAFORM_VERSION }}"    
+           echo "Terraform version: ${{ env.TERRAFORM_VERSION }}"    
     
           
