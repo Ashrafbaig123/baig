@@ -12,17 +12,16 @@ on:
           - EMEA_DEV
           - AMER_INT
 jobs:
-   runs-on: ubuntu-latest
-   outputs:
-        RUNNER_NAME: ${{ github.event.inputs.environment }}
-   steps:
-        - name: Overview Environment Variables
-          run: |
-            echo "Environment: ${{ github.event.inputs.environment }}"
-            echo "Github Runner Label to run on: ${{ github.event.inputs.environment }}"
-            echo "Terraform version: ${{ env.TERRAFORM_VERSION }}"
-
-  plan-or-show-infrastructure:
-    needs: [ init ]
-    runs-on: ${{ needs.init.outputs.RUNNER_NAME }}
-    environment: '${{ github.event.inputs.environment }}'
+  download_image_name_file:
+    name: Overview Environment Variables
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3          
+    - name: echo
+      run: |
+           echo "Environment: ${{ github.event.inputs.environment }}"
+           echo "Github Runner Label to run on: ${{ github.event.inputs.environment }}"
+           echo "Terraform version: ${{ env.TERRAFORM_VERSION }}"    
+    
+          
