@@ -1,6 +1,6 @@
 name: purge of Images
 
-on: [push]
+on: 
   #workflow_dispatch:
   
 
