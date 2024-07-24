@@ -25,7 +25,7 @@ jobs:
       run: |
            echo "Environment: ${{ github.event.inputs.environment }}"
            echo "Github Runner Label to run on: ${{ github.event.inputs.environment }}"
-           echo "Terraform version: $TERRAFORM_VERSION"    
+           echo "Terraform version: ${{ env.TERRAFORM_VERSION }}"    
   
     
           
